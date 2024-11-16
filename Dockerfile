@@ -4,9 +4,6 @@ FROM pytorch/pytorch:2.5.1-cuda12.1-cudnn9-devel
 # working directory
 WORKDIR /workspace
 
-# ---------------------------------------------
-# Project-agnostic System Dependencies
-# ---------------------------------------------
 RUN \
     # Install System Dependencies
     apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
@@ -21,9 +18,14 @@ RUN \
         curl && \
     rm -rf /var/lib/apt/lists/*
 
-# https://pythonspeed.com/articles/activate-virtualenv-dockerfile/# 
-RUN python3 -m venv /opt/venv-ttt
-RUN python3 -m venv /opt/venv-inference
+
+# ---------------------------------------------
+# Create Virtual Environment
+# ---------------------------------------------
+# https://pythonspeed.com/articles/activate-virtualenv-dockerfile/
+RUN python3 -m venv --system-site-packages /opt/venv-ttt
+RUN python3 -m venv --system-site-packages /opt/venv-inference
+
 
 # ---------------------------------------------
 # Build Python depencies and utilize caching
