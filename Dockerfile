@@ -29,6 +29,8 @@ RUN python3 -m venv /opt/venv-inference
 # Build Python depencies and utilize caching
 # ---------------------------------------------
 COPY ./requirements.txt /workspace/main/requirements.txt
+COPY ./requirements-ttt.txt /workspace/main/requirements-ttt.txt
+COPY ./requirements-inference.txt /workspace/main/requirements-inference.txt
 
 RUN . /opt/venv-ttt/bin/activate && \
     pip install --no-cache-dir --upgrade pip && \
