@@ -18,18 +18,12 @@ RUN \
         curl && \
     rm -rf /var/lib/apt/lists/*
 
-
-# ---------------------------------------------
 # Create Virtual Environment
-# ---------------------------------------------
 # https://pythonspeed.com/articles/activate-virtualenv-dockerfile/
-RUN python3 -m venv --system-site-packages /opt/venv-ttt
-RUN python3 -m venv --system-site-packages /opt/venv-inference
+RUN python3 -m venv /opt/venv-ttt
+RUN python3 -m venv /opt/venv-inference
 
-
-# ---------------------------------------------
 # Build Python depencies and utilize caching
-# ---------------------------------------------
 COPY ./requirements.txt /workspace/main/requirements.txt
 COPY ./requirements-ttt.txt /workspace/main/requirements-ttt.txt
 COPY ./requirements-inference.txt /workspace/main/requirements-inference.txt
