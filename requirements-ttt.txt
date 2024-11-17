@@ -1,4 +1,0 @@
-torchtune @ git+https://github.com/ekinakyurek/torchtune.git@ekin/currentrb
-
---index-url https://download.pytorch.org/whl/cu121
-torch

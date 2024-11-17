@@ -30,13 +30,25 @@ COPY ./requirements-inference.txt /workspace/main/requirements-inference.txt
 
 RUN . /opt/venv-ttt/bin/activate && \
     pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r /workspace/main/requirements.txt && \
-    pip install --no-cache-dir -r /workspace/main/requirements-ttt.txt
+    pip install --no-cache-dir \
+        tqdm \
+        numpy \
+        scipy \
+        matplotlib \
+        torchtune@git+https://github.com/ekinakyurek/torchtune.git@ekin/llama32 && \
+    pip install --no-cache-dir \
+        torch \
+        torchao \
+        --pre --upgrade --index-url https://download.pytorch.org/whl/nightly/cu121
 
 RUN . /opt/venv-inference/bin/activate && \
     pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r /workspace/main/requirements.txt && \
-    pip install --no-cache-dir -r /workspace/main/requirements-inference.txt
+    pip install --no-cache-dir \
+        tqdm \
+        numpy \
+        scipy \
+        matplotlib \
+        vllm==0.5.5
 
 # upload everything
 COPY . /workspace/main/
