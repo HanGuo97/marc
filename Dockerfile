@@ -46,7 +46,7 @@ RUN . /opt/venv-inference/bin/activate && \
         numpy \
         scipy \
         matplotlib \
-        vllm==0.5.5
+        vllm@git+https://github.com/ekinakyurek/vllm.git@ekin/torchtunecompat
 
 # upload everything
 COPY . /workspace/main/
