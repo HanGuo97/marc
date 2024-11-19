@@ -1,5 +1,5 @@
 # syntax = docker/dockerfile:1.0-experimental
-FROM pytorch/pytorch:2.5.1-cuda12.1-cudnn9-devel
+FROM pytorch/pytorch:2.5.1-cuda12.1-cudnn9-runtime
 
 # working directory
 WORKDIR /workspace
